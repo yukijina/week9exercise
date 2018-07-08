@@ -55,14 +55,38 @@ var newArray = [];
 //No.15
 var myUl = document.getElementsByTagName('ul')[0];
 var myBtn = document.getElementsByTagName('button')[0];
-
+//create onclick function to myBtn
 myBtn.onclick = function () {
+  //grab input text and store in a variable
   var myInput = document.getElementsByTagName('input')[0].value;
+  //push input text to my empty array
   newArray.push(myInput);
-  for (var i = 0; i < newArray.length; i++) {
+  drawList();
+};
+var secBtn = document.getElementsByTagName('button')[1];
+var thirdBtn = document.getElementsByTagName('button')[2];
+var forthBtn = document.getElementsByTagName('button')[3];
 
+//second button for sort
+secBtn.onclick = function() {
+  console.log(newArray.sort());
+  drawList();
+};
+
+//third button for reverse
+thirdBtn.onclick = function () {
+  console.log(newArray.reverse());
+  drawList();
+};
+
+function drawList() {
+  // empty out the list first (in case there's already list-items in there)
+	myUl.innerHTML = "";
+  //Loop through array (now array is not empty)
+  for (var i = 0; i < newArray.length; i++) {
+    //create li element append ul
     var myLi = document.createElement('li');
     console.log(myLi.textContent = newArray[i]);
     myUl.appendChild(myLi);
   }
-  }
+}
